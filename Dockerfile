@@ -37,7 +37,10 @@ RUN ./configure --prefix=/tmp/target ${YAF_BUILD_ARGS} && \
 
 WORKDIR /tmp/${SILK_VERSION}
 RUN ./configure --prefix=/tmp/target ${SILK_BUILD_ARGS} && \
-    make -j${BUILD_WORKERS} && make install
+    make -j${BUILD_WORKERS} && \
+    make install && \
+    cp site/twoway/silk.conf /tmp/target/etc/silk-twoway.conf && \
+    cp site/generic/silk.conf /tmp/target/etc/silk-generic.conf
 
 FROM debian:buster
 
