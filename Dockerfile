@@ -12,8 +12,8 @@ ENV YAF_BUILD_ARGS "--enable-applabel"
 ENV LIBFIXBUF_BUILD_ARGS ""
 
 RUN apt-get update && \
-    apt-get install -y \
-      curl build-essential libglib2.0-dev zlib1g-dev \
+    apt-get install -y --no-install-recommends \
+      ca-certificates curl build-essential libglib2.0-dev zlib1g-dev \
       libgnutls28-dev libpcap0.8-dev python3-dev && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
@@ -48,7 +48,7 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
       libglib2.0 zlib1g libgnutls28-dev libpcap0.8 python3-minimal && \
     rm -rf /var/lib/apt/lists/*
 
