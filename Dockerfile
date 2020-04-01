@@ -54,7 +54,7 @@ RUN chmod +x /tini
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libglib2.0 zlib1g liblzo2-2 \
-      libgnutls28-dev libpcap0.8 python3-minimal libmaxminddb0 && \
+      libgnutls28-dev libpcap0.8 python3-minimal libpython3.7 libmaxminddb0 && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /tmp/target /usr/local
